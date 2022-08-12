@@ -1,0 +1,9 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Logged out{% endblock %}
+{% block content %}
+ <h1>Déconnecté</h1>
+ <p>
+    Vous avez été déconnecté avec succès.
+    Vous pouvez <a href="{% url 'dashboard:login' %}">se reconnecter</a>.
+ </p>
+{% endblock %}

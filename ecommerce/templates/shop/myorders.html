@@ -1,0 +1,39 @@
+{% extends 'shop\base.html' %}
+{% block content %}
+
+
+<div class="container h-75">
+    <div class="p-4">
+    <h3>My Orders</h3>
+    <table class="table table-bordered track_tbl">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Order id</th>
+                <th>Payement</th>
+                <th>Created</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for o in orders  %}
+            <tr class="active">
+                <td class="track_dot">
+                    <span class="track_line"></span>
+                </td>
+                <td>{{o.id}}</td>
+                <td>{% if o.paid == False %}Waiting
+                {% else %}Paid{% endif %}</td>
+                
+            
+               
+                <td>{{o.created}}</td>
+                <td>{% if o.paid == False %}<a class='btn btn-info btn-xs' href="{% url 'shop:payment' o.id%}"><span class="glyphicon glyphicon-edit"></span> Pay</a> {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+    {% endblock content %}

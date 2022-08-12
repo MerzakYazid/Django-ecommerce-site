@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% block title %}Les produits{% endblock  %}
+{% block content %}
+<section class="section-content padding-y-sm">
+<div class="container ">
+<article class="card card-body">
+
+ <div class="row ">
+ {% for p in products %}
+	<div class="col-md-3 col-sm-6">
+		<figure class="card card-product-grid">
+			<a href="{% url 'shop:productDetails' p.id%}" class="img-wrap">
+				<img src="{{p.image.url}}">
+			</a>
+			<figcaption class="info-wrap">
+				<a href="{% url 'shop:productDetails' p.id%}" class="title">{{p.name}}</a>
+				<div class="mt-2">
+					<var class="price">{{p.price}}DH</var> <!-- price-wrap.// -->
+                    <a href="{% url 'shop:cart_add' p.id %}" class="btn btn-sm btn-outline-primary float-right">Ajouter au panier <i class="fa fa-shopping-cart"></i></a>
+                </div> <!-- action-wrap.end -->
+			</figcaption>
+		</figure> <!-- card // -->
+	</div> <!-- col.// -->
+{% endfor %}
+<article>
+</div>
+
+</section>
+{% endblock  %}

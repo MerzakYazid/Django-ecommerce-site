@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Les utilisateurs{% endblock  %}
+
+{% block content %}
+<div class="container">
+<a href="{% url 'dashboard:adminUsersCreate' %}" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new Admin</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for admin in adminUsers %}
+    <tr>
+      <th scope="row">{{admin.id}}</th>
+      <td>{{admin.user.first_name}}</td>
+      <td>{{admin.user.last_name}}</td>
+      <td>{{admin.user.email}}</td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+</div>
+{% endblock  %}

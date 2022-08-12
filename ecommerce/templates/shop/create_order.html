@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Votre commande
+{% endblock %}
+{% block content %}
+<div class="container h-75">
+    <div class="order-info" >
+        <h1>Votre commande</h1>
+        <p>Total de votre commande : {{ cart_total_price }} DH</p>
+        <br>
+    </div>
+<form method="POST" enctype="multipart/form-data">
+ {% csrf_token %}
+  {{form|crispy}}
+  <input type="submit" class="btn btn-primary" value="Enregistrer">
+</form>
+</div>
+</div>
+{% endblock %}

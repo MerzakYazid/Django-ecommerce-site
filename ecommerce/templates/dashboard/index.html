@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Home{% endblock  %}
+{% block content  %}
+
+<div class="container">
+    <div class="jumbotron" wfd-id="127" mt-3 >
+    {% if request.user.is_authenticated and not request.user.is_costumer%}
+        <h1 class="display-3">Dashboard of FMLGAMING </h1>
+         <p class="lead"> 
+          <a class="btn btn-primary btn-lg" href="{% url 'dashboard:adminUsersList' %}" role="button">Users</a>
+        </p>
+        <p class="lead"> 
+          <a class="btn btn-primary btn-lg" href="{% url 'dashboard:categoryList' %}" role="button">Categories</a>
+        </p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="{% url 'dashboard:productList' %}" role="button">Products</a>
+        </p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="{% url 'dashboard:orderlist' %}" role="button">Orders</a>
+        </p>
+        {%else%}
+              <h1 class="display-3">You need to log in to access the dashboard</h1>
+
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="{%url 'dashboard:login'%}" role="button">Login</a>
+        </p>
+        {%endif%}
+      </div>
+</div>
+{% endblock  %}

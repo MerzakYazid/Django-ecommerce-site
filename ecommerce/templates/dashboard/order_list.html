@@ -1,0 +1,44 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Les commandes{% endblock  %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Postal code</th>
+            <th scope="col">City</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for c in commandes %}
+          <tr>
+            <th scope="row">{{c.id}}</th>
+            <td>{{c.costumer_id}}</td>
+            <td>{{c.adress}}</td>
+            <td>{{c.postal_code}}</td>
+            <td>{{c.city}}</td>
+            <td>{{c.created}}</td>
+            <td>{{c.updated}}</td>
+            <td>{% if c.paid == False %}
+              Waiting
+              {% else %}
+              Paid
+            {% endif %}
+            </td>
+            
+          </tr>
+        {% endfor %} 
+        </tbody>
+      </table>
+</div>
+</div>
+</div>
+{% endblock  %}
